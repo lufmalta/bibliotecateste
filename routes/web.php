@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Rotas para realizar a autenticação.
+Route::group(['middleware' => 'guest'], function() {
+
+    Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+
+});
+
+//Rotas para usuários autenticados.
+Route::group(['middleware' => 'auth'], function() {
+
+    Route::get('/',  [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
 });

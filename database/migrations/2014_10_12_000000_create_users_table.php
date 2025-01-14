@@ -4,8 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
-{
+/**
+ * Migration da entidade users (usuários).
+ *
+ * @author Luiz Fernando <lufmalta@gmail.com>
+ * @since 13/01/2025 
+ * @version 1.0.0
+ */
+class CreateUsersTable extends Migration {
+    
     /**
      * Run the migrations.
      *
