@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function() {
     //Middleware responsável por checar se usuário possui acesso a funcionalidade.
     Route::group(['middleware' => 'checkPermission'], function() {
 
+        //Rotas para gerenciamento de livros.
         Route::group([], function() {
 
             Route::get('livros',                ['uses' => 'App\Http\Controllers\BookController@index',  'permission' => 'books.index']);
@@ -38,6 +39,18 @@ Route::group(['middleware' => 'auth'], function() {
             Route::post('livros',               ['uses' => 'App\Http\Controllers\BookController@insert', 'permission' => 'books.insert']);
             Route::put('livros',                ['uses' => 'App\Http\Controllers\BookController@update', 'permission' => 'books.update']);
             Route::delete('livros',             ['uses' => 'App\Http\Controllers\BookController@delete', 'permission' => 'books.delete']);
+
+        });
+
+        //Rotas para gerenciamento de usuários.
+        Route::group([], function() {
+
+            Route::get('usuarios',                ['uses' => 'App\Http\Controllers\UserController@index',  'permission' => 'users.index']);
+            Route::get('usuarios/criar',          ['uses' => 'App\Http\Controllers\UserController@create', 'permission' => 'users.insert']);
+            Route::get('usuarios/{id}/editar',    ['uses' => 'App\Http\Controllers\UserController@edit',   'permission' => 'users.update'])->where(['id' => '[0-9+]']);
+            Route::post('usuarios',               ['uses' => 'App\Http\Controllers\UserController@insert', 'permission' => 'users.insert']);
+            Route::put('usuarios',                ['uses' => 'App\Http\Controllers\UserController@update', 'permission' => 'users.update']);
+            Route::delete('usuarios',             ['uses' => 'App\Http\Controllers\UserController@delete', 'permission' => 'users.delete']);
 
         });
 

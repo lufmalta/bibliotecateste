@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\BookGenre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,6 +20,11 @@ use Illuminate\Support\Facades\Validator;
  */
 class BookController extends Controller {
     
+    /**
+     * Obtém a lista de livros do sistema.
+     *
+     * @param Request $request
+     */
     public function index(Request $request) {
 
         $group = Auth::user()->group;
@@ -56,11 +62,16 @@ class BookController extends Controller {
         if ($book) {
             return $this->form($book);
         } else {
-            return redirect('books')->withErrors("Livro não encontrado.");
+            return redirect('livros')->withErrors("Livro não encontrado.");
         }
 
     }
 
+    /**
+     * Insere um novo registro no sistema.
+     *
+     * @param Request $request
+     */
     public function insert(Request $request) {
 
         $validator = $this->validation($request);
@@ -196,6 +207,8 @@ class BookController extends Controller {
 
         try {
 
+            DB::beginTransaction();
+
             $isCreate = $request->id ? false : true;
 
             $book->name = $request->name;
@@ -208,9 +221,11 @@ class BookController extends Controller {
                 $book->save();
             }
 
+            DB::commit();
             return true;
 
         } catch (\Exception $e) {
+            DB::rollBack();
             Log::error("[BOOK] Não foi possível ".($isCreate ? 'inserir' : 'alterar')." livro, erro: ".$e->getMessage());
             return false;
         }

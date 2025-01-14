@@ -45,5 +45,34 @@ class User extends Authenticatable
     public function group() {
         return $this->belongsTo('App\Models\Group');
     }
+
+    /**
+     * Obtém a lista de usuários pela pesquisa
+     *
+     * @param [type] $query
+     * @param [type] $request
+     * @return $query
+     */
+    public function scopeSearch($query, $request = null) {
+
+        $query->select("u.*", "g.name as group_name")->from("users as u")
+            ->join("groups as g", "g.id", "u.group_id");
+
+        if ($request) {
+
+            if ($request->search) {
+
+                $search = trim($request->search);
+
+                //Insere as condições where nas colunas pela pesquisa.
+                getWheresQuery($query, $search, ["u.name", "u.email", "g.name"]);
+
+            }
+
+        }
+
+        return $query;
+
+    }
     
 }

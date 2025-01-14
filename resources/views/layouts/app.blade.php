@@ -39,8 +39,14 @@
                     <ul class="navbar-nav">
 
                         @if ($group->verifyPermission('books.index'))
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url('livros') }}">Livros<span class="sr-only"></span></a>
+                            </li>
+                        @endif
+
+                        @if ($group->verifyPermission('users.index'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('usuarios') }}">Usuarios<span class="sr-only"></span></a>
                             </li>
                         @endif
                         

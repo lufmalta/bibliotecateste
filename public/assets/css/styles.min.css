@@ -1,9 +1,0 @@
-.page.index .card .card-body .obs {
-  display: flex;
-  justify-content: center;
-}
-
-.page.index .card .card-footer, .page.create-edit .card .card-footer {
-  display: flex;
-  justify-content: space-between;
-}

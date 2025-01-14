@@ -20,8 +20,8 @@ $ EXIT;
 - Popular o banco com as migrations e os seeders.
 $ php artisan migrate --seed
 
-- Subir aplicação:
-$ php artisan serve
-$ npm run watch
+- Subir aplicação (dentro da pasta do projeto):
+$ php artisan serve (em um terminal)
+$ gulp watch (em um terminal)
 
 - Acessar a página localhost:8000 e realizar o login com algum dos usuários que estão dentro do UserSeeder.php

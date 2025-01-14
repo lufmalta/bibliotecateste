@@ -4,7 +4,7 @@
 
     <div class="page page-book create-edit">
 
-        <form action="{{ url('livros') }}" method="POST">
+        <form action="{{ url('livros') }}" method="POST" data-parsley-validate>
 
             @csrf
             @method($book->id ? 'PUT' : 'POST')
@@ -20,17 +20,17 @@
                 <div class="card-body">
                     
                     <div class="form-group">
-                        <label>Nome</label>
+                        <label>Nome <span class="text-danger fas fa-asterisk"></span></label>
                         <input class="form-control" type="text" name="name" value="{{ old('name', $book->name) }}" maxlength="100" required="required">
                     </div>
 
                     <div class="row">
                         <div class="form-group col-sm-6">
-                            <label>Autor</label>
+                            <label>Autor <span class="text-danger fas fa-asterisk"></span></label>
                             <input class="form-control" type="text" name="author" value="{{ old('author', $book->author) }}" maxlength="100" required="required">
                         </div>
                         <div class="form-group col-sm-6">
-                            <label>Gênero</label>
+                            <label>Gênero <span class="text-danger fas fa-asterisk"></span></label>
                             <select class="form-control" name="genrer_id" required="required">
                                 <option value="">Selecione</option>
                                 @foreach ($bookGenres as $genrer)

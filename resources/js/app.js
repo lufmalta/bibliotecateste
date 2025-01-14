@@ -55,3 +55,7 @@ $('.btn-delete').on('click', function() {
     }
 
 });
+
+$('.onchange-submit').on('change', function() {
+    $(this).closest('form').trigger('submit');
+});

@@ -8,7 +8,7 @@
 				</div>
 			</div>
 			<div class="col-4 col-md-3">
-				<select class="form-control onchange-submit" name="display_qty">
+				<select class="form-control onchange-submit" name="limit_per_page">
 					@foreach (getLimitValues() as $number)
 						<option value="{{ $number }}" {{ $number == Request::get('limit_per_page') ? 'selected="selected"' : '' }}>{{ $number }}</option>
 					@endforeach
