@@ -44,6 +44,7 @@ aparentou que somente usuários biblioteca poderiam realizar empréstimos. Exist
 devolução.
 - Após criar o empréstimo, acessando a tela index de emprestimos, será possível acessar a info do empréstimo, nela terá acesso as informações do empréstimo, assim como o histórico de status, criei este histórico, para poderem acompanhar quando foi realizado o empréstimo, o atrasado(caso exista) e a devolução, pensando em futuros relatórios para a aplicação.
 - Ainda na tela index de empréstimos, na lista de empréstimo, existe um botão(relogio) para marcar como atrasado o empréstimo, e também o botão(check) para marcar como devolvido e também o botão para remover um empréstimo, somente é permitido remover o empréstimo se o mesmo estiver ja sido devolvido.  
+- Criei também uma tela para acessar "meus empréstimos", esta tela somente é acessada pelo usuário biblioteca, caso faça login com ele, ira acessar esta tela e visualizar os seus empréstimos realizados.
 PS: Tanto na tela de livros, quanto na de usuários o número cadastro e número de registro.
 Foi criado várias validações para não permitir por exemplo, emprestar um livro que ja esta emprestado, permitir remover um livro
 que ainda não foi devolvido, entre várias outras validações de segurança. Também foi criado os grupos de usuário, e na model de Group.php
