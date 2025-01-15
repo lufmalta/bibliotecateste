@@ -47,9 +47,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Group');
     }
 
-    //TODO preciso terminar o raciocinio, começei o de marcar como atrasado, verificar se falta algo nele, e depois
-    //preciso fazer o de marcar como devolvido, ai encerrando, crio a tela para o usuário biblioteca visualizar seus empréstimos, testo
-    //e envio o email.
+    /**
+     * Obtém o relacionamento entre usuários e livros, para obter os livros que o usuário tem alguma relação.
+     *
+     */
     public function books() {
         return $this->belongsToMany('App\Models\Book', 'lending_books', 'user_id',  'book_id');
     }

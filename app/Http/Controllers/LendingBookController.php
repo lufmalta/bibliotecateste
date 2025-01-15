@@ -9,14 +9,12 @@ use App\Models\Book;
 use App\Models\LendingBook;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-
-//TODO preciso verificar se fiz corretamente tudo, se não ficou faltando nada, talvez vou fazer a ordenação, mas se estiver
-//tudo correto conforme esperado ai irei finalizar.
 
 /**
  * Controller da entidade empréstimos livros (lending_books)
@@ -249,7 +247,7 @@ class LendingBookController extends Controller {
      */
     public function getUsers(Request $request) {
         $users = User::getLibraryUsers($request)->limit(50)->get();
-        return $users;
+        return response($users, Response::HTTP_OK);
     }
 
     /**
@@ -258,8 +256,33 @@ class LendingBookController extends Controller {
      * @param Request $request
      */
     public function getBooks(Request $request) {
+
         $books = Book::getBooksToLending($request)->limit(50)->get();
-        return $books;
+
+        // Eu sei que o default é o http_ok, apenas estou mostrando que também sei como retornar dados para api.
+        return response($books, Response::HTTP_OK);
+
+    }
+
+    /**
+     * Obtém a view index para visualização dos livros emprestados pelo usuário biblioteca.
+     *
+     */
+    public function indexBookForUsers(Request $request) {
+
+        $user = Auth::user();
+        $group = $user->group;
+
+        //Verifica se o grupo é usuário biblioteca, porque por enquanto apenas este grupo poderá acessar esta tela.
+        if ($group->id == GroupEnum::LIBRARY_USER) {
+
+            $lendingBooks = LendingBook::getToIndexBookForUser($user->id, $request)->paginate(10);
+            return view("user.lending-book-index", ['lendingBooks' => $lendingBooks]);
+
+        } else {
+            return redirect('/')->withErrors("Somente usuários biblioteca possuem acesso a esta tela.");
+        }
+
     }
 
     /**

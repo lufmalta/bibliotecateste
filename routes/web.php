@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function() {
     //Middleware responsável por checar se usuário possui acesso a funcionalidade.
     Route::group(['middleware' => 'checkPermission'], function() {
 
+        Route::get("usuario-biblioteca/emprestimos", ['uses' => 'App\Http\Controllers\LendingBookController@indexBookForUsers', 'permission' => 'loans.list']);
+
         //Rotas para gerenciamento de livros.
         Route::group([], function() {
 
