@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\BookSituationEnum;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -36,6 +37,31 @@ class Book extends Model {
                 //Insere as condições where nas colunas pela pesquisa.
                 getWheresQuery($query, $search, ['bk.name', 'bk.author', 'bkg.name']);
 
+            }
+
+        }
+
+        return $query;
+
+    }
+
+    /**
+     * Obtém os livros disponiveis para emprestimo.
+     *
+     * @param [Eloquent] $query
+     * @param [Request] $request
+     * @return $query
+     */
+    public function scopeGetBooksToLending($query, $request = null) {
+
+        $query->select("bk.*")->from("books as bk")
+            ->where("bk.situation_id", BookSituationEnum::AVAILABLE);
+
+        if ($request) {
+
+            if ($request->search) {
+                $search = trim($request->search);
+                getWheresQuery($query, $search, ["bk.name", "bk.author", "bk.nr_serial"]);
             }
 
         }

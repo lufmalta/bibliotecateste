@@ -18,8 +18,8 @@ class Group extends Model {
     public $timestamps = false;
 
     private $permissions = [
-        GroupEnum::ADMIN => ['users.*', 'books.*'],
-        GroupEnum::ATTENDANT => ['books.*'],
+        GroupEnum::ADMIN => ['users.*', 'books.*', 'lending-books.*'],
+        GroupEnum::ATTENDANT => ['books.*', 'lending-books.*'],
         GroupEnum::LIBRARY_USER => ['loans.list']
     ];
 

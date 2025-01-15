@@ -49,6 +49,12 @@
                                 <a class="nav-link" href="{{ url('usuarios') }}">Usuarios<span class="sr-only"></span></a>
                             </li>
                         @endif
+
+                        @if ($group->verifyPermission('lending-books.index'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('emprestimos') }}">Emprestimos<span class="sr-only"></span></a>
+                            </li>
+                        @endif
                         
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">

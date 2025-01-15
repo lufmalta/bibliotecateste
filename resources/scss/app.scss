@@ -1,11 +1,20 @@
 .page.index {
-    .card .card-body .obs {
-        display: flex;
-        justify-content: center;
+
+    .card {
+
+        .card-body {
+
+            .obs {
+                display: flex;
+                justify-content: center;
+            }
+        }
+
     }
+
 } 
 
-.page.index, .page.create-edit {
+.page.index, .page.create-edit, .page.create {
     
     .card {
         
@@ -22,4 +31,52 @@
     list-style: none;
     padding: 0;
     color: #ff0000;
+}
+
+.select2.select2-container--disabled .select2-selection {
+    background-color: #e9ecef;
+
+    .select2-selection__arrow {
+        display: none;
+    }
+
+}
+
+.select2-container{
+    display: block;
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+
+}
+
+.select2-selection{
+
+    &.select2-selection--single {
+
+        font-weight: 300;
+        font-size: 14px;
+        border-color: #ebebeb;
+        padding: 5px 14px;
+        height: auto;
+        min-height: 40px;
+
+        .select2-selection__arrow{
+            width: 30px;
+            top:10px;
+
+            b{
+                border-color: #000 transparent transparent transparent;
+                border-width: 5px 4px 0 4px;
+            }
+        }
+    }
+
+}
+
+.modal-header {
+    display: block;
+    float: left;
 }

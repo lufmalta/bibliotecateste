@@ -30,9 +30,11 @@ var vendorJsFiles = [
 	'node_modules/jquery/dist/jquery.js',
 	'node_modules/bootstrap/dist/js/bootstrap.js',
 	'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
-	'node_modules/bootbox/dist/bootbox.min.js',
+	'node_modules/bootbox/bootbox.min.js',
 	'node_modules/parsleyjs/dist/parsley.js',
 	'node_modules/parsleyjs/dist/i18n/pt-br.js',
+	'node_modules/select2/dist/js/select2.js',
+    'node_modules/select2/dist/js/i18n/pt-BR.js',
 	// 'node_modules/jquery-mask-plugin/dist/jquery.mask.js',
 	// 'node_modules/moment/moment.js',
 	// 'node_modules/moment/locale/pt-br.js',
@@ -43,6 +45,7 @@ var vendorJsFiles = [
 var vendorCssFiles = [
     'node_modules/bootstrap/dist/css/bootstrap.css',
     'node_modules/@fortawesome/fontawesome-free/css/all.min.css',
+	'node_modules/select2/dist/css/select2.css',
 	// 'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.css'
 ]
 

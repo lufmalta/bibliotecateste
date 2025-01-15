@@ -12,6 +12,7 @@
 
             <div class="card-body">
                 
+                @include("partials._alert")
                 @include("partials._filters")
 
                 @if (count($users))
@@ -53,11 +54,10 @@
 
                                                 @if ($canDelete)
 
-                                                    {{-- TODO deverei verificar se existe algum emprestimo de livro com este usuário e que o mesmo ainda não esta disponivel $user->situation_id == BookSituationEnum::AVAILABLE --}}
-                                                    @if (true)
-                                                        <a href="#" data-url="{{ url('usuarios') }}" data-id="{{ $user->id }}" class="btn btn-danger btn-sm btn-delete" title="Remover usuário"><i class="fas fa-trash"></i></a>
+                                                    @if ($user->books && count($user->books) > 0)
+                                                        <button disabled="disabled" class="btn btn-danger btn-sm btn-icon-only" title="Existem empréstimos de livros relacionadas a este usuário."><i class="fas fa-trash"></i></button>
                                                     @else
-                                                        <button disabled="disabled" class="btn btn-danger btn-icon-only" title="Existem empréstimos de livros relacionadas a este usuário."><i class="fas fa-trash"></i></button>
+                                                        <a href="#" data-url="{{ url('usuarios') }}" data-id="{{ $user->id }}" class="btn btn-danger btn-sm btn-delete" title="Remover usuário"><i class="fas fa-trash"></i></a>
                                                     @endif
 
                                                 @endif

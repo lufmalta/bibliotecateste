@@ -54,6 +54,21 @@ Route::group(['middleware' => 'auth'], function() {
 
         });
 
+        //Rotas para gerenciamento de usuários.
+        Route::group([], function() {
+
+            Route::get('emprestimos',                ['uses' => 'App\Http\Controllers\LendingBookController@index',         'permission' => 'lending-books.index']);
+            Route::get('emprestimos/criar',          ['uses' => 'App\Http\Controllers\LendingBookController@create',        'permission' => 'lending-books.insert']);
+            Route::post('emprestimos',               ['uses' => 'App\Http\Controllers\LendingBookController@insert',        'permission' => 'lending-books.insert']);
+            Route::delete('emprestimos',             ['uses' => 'App\Http\Controllers\LendingBookController@delete',        'permission' => 'lending-books.delete']);
+            Route::post('emprestimos/atrasado',      ['uses' => 'App\Http\Controllers\LendingBookController@delayed',       'permission' => 'lending-books.delayed']);
+            Route::post('emprestimos/devolver',      ['uses' => 'App\Http\Controllers\LendingBookController@returnBook',    'permission' => 'lending-books.return']);
+            Route::get('emprestimos/usuarios/obter', ['uses' => 'App\Http\Controllers\LendingBookController@getUsers',      'permission' => 'lending-books.index']);
+            Route::get('emprestimos/livros/obter',   ['uses' => 'App\Http\Controllers\LendingBookController@getBooks',      'permission' => 'lending-books.index']);
+            Route::get('emprestimos/{id}/info',      ['uses' => 'App\Http\Controllers\LendingBookController@info',          'permission' => 'lending-books.index'])->where('id', '[0-9]+');
+
+        });
+
     });
 
 });

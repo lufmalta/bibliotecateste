@@ -8,6 +8,8 @@ $ git checkout develop
 - Deverá instalar o projeto
 $ composer install
 $ npm install (antes deverá remover package-lock.json)
+- Caso não possua instalado o gulp na máquina, deverá instala-lo com o comando a seguir:
+$ npm install --global gulp-cli@2.3.0 (a versão que estou utilizando é a 2.3.0)
 
 - Fazer a copia do arquivo .env.example para um novo arquivo chamado .env
 - Colocar as credenciais do banco de dados mysql configurados na sua máquina, caso ainda não possua, instale o mysql e crie o usuário, exemplo criação usuário:
@@ -25,3 +27,5 @@ $ php artisan serve (em um terminal)
 $ gulp watch (em um terminal)
 
 - Acessar a página localhost:8000 e realizar o login com algum dos usuários que estão dentro do UserSeeder.php
+
+--TODO PRECISO ESCREVER TUDO QUE ESTA FALTANDO PARA TESTAR O SISTEMA, E LEMBRAR DE FAZER FUNCIONAR OS ALERTAS NAS VIEWS.

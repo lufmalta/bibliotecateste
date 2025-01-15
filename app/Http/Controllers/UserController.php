@@ -138,8 +138,10 @@ class UserController extends Controller {
 
             if ($user) {
 
-                //Verifica se o livro esta disponível antes de remove-lo.
-                if (/* deverei verificar se existe algum livro emprestado para este usuário. */true) {
+                $books = $user->books()->count();
+
+                //Somente permite remover se não existir empréstimos deste usuário biblioteca.
+                if ($books == 0) {
 
                     try {
     

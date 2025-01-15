@@ -6,9 +6,10 @@ use BenSampo\Enum\Enum;
 
 /**
  * Enum para grupos de usuário.
- * @method static static OptionOne()
- * @method static static OptionTwo()
- * @method static static OptionThree()
+ *
+ * @author Luiz Fernando <lufmalta@gmail.com>
+ * @since 14/01/2025 
+ * @version 1.0.0
  */
 final class GroupEnum extends Enum {
 

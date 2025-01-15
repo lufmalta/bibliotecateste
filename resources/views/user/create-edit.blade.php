@@ -18,6 +18,8 @@
                 </div>
     
                 <div class="card-body">
+
+                    @include("partials._alert")
                     
                     <div class="form-group">
                         <label>Nome <span class="text-danger fas fa-asterisk"></span></label>

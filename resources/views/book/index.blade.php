@@ -12,6 +12,7 @@
 
             <div class="card-body">
                 
+                @include("partials._alert")
                 @include("partials._filters")
 
                 @if (count($books))
@@ -57,7 +58,7 @@
                                                     @if ($book->situation_id == BookSituationEnum::AVAILABLE)
                                                         <a href="#" data-url="{{ url('livros') }}" data-id="{{ $book->id }}" class="btn btn-danger btn-sm btn-delete" title="Remover livro"><i class="fas fa-trash"></i></a>
                                                     @else
-                                                        <button disabled="disabled" class="btn btn-danger btn-icon-only" title="Existem empréstimos relacionadas a este livro."><i class="fas fa-trash"></i></button>
+                                                        <button disabled="disabled" class="btn btn-danger btn-sm btn-icon-only" title="Existem empréstimos relacionadas a este livro."><i class="fas fa-trash"></i></button>
                                                     @endif
 
                                                 @endif
