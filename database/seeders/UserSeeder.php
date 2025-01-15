@@ -24,12 +24,26 @@ class UserSeeder extends Seeder {
     public function run() {
 
         //Insere os usuários na tabela de usuários.
-        User::insert([
-            ['name' => 'Helio', 'email' => 'helio@appfacilita.com', 'password' => bcrypt('teste'), 'group_id' => GroupEnum::ADMIN, 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Luiz Fernando', 'email' => 'lufmalta@gmail.com', 'password' => bcrypt('teste'), 'group_id' => GroupEnum::ADMIN, 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Atendente', 'email' => 'atendente@gmail.com', 'password' => bcrypt('teste'), 'group_id' => GroupEnum::ATTENDANT, 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Usuario biblioteca', 'email' => 'usuariobiblioteca@gmail.com', 'password' => bcrypt('teste'), 'group_id' => GroupEnum::LIBRARY_USER, 'created_at' => now(), 'updated_at' => now()],
-        ]);
+        $users = [
+            ['name' => 'Helio', 'email' => 'helio@appfacilita.com', 'group_id' => GroupEnum::ADMIN],
+            ['name' => 'Luiz Fernando', 'email' => 'lufmalta@gmail.com', 'group_id' => GroupEnum::ADMIN],
+            ['name' => 'Atendente', 'email' => 'atendente@gmail.com', 'group_id' => GroupEnum::ATTENDANT],
+            ['name' => 'Usuario biblioteca', 'email' => 'usuariobiblioteca@gmail.com', 'group_id' => GroupEnum::LIBRARY_USER],
+        ];
+
+        foreach ($users as $us) {
+
+            $user = new User();
+            $user->name = $us['name'];
+            $user->email = $us['email'];
+            $user->password = bcrypt('teste');
+            $user->group_id = $us['group_id'];
+            $user->save();
+            $user->nr_serial = getSerialCode($user->id);
+            $user->save();
+
+        }
+        
         
     }
 }
