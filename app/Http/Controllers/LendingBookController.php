@@ -35,6 +35,8 @@ class LendingBookController extends Controller {
         $group = Auth::user()->group;
         $data = $group->getAllPermissions('lending-books', ['insert', 'delete', 'delayed', 'return']);
 
+        //TODO apesar de ter feito esses comportamentos para ordenação, não foi feito no front-end, ate mesmo porque
+        //foi informado que não seria analisado o mesmo, mas caso envie pela própria url o parâmetro ira funcionar.
         //Obtém a ordenação e limite por página.
         $sort = $request->sort ?? "desc";
         $column = checkOrderColumn($request->column, ['user_name', 'book_name', 'current_status_name'], 'id');

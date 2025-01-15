@@ -25,7 +25,7 @@
     							<tr>
     								<th data-column="id">ID</th>
     								<th data-column="name">Nome</th>
-                                    <th data-column="nr_serial">Número Cadastro</th>
+                                    <th data-column="nr_serial">Número Registro</th>
                                     <th data-column="situation_id">Situação</th>
     								<th data-column="created_at">Cadastro</th>
                                     @if ($canUpdate || $canDelete)
@@ -46,9 +46,7 @@
                                         @if ($canUpdate || $canDelete)
                                             <td>
 
-                                                {{-- <a href="{{ url('livros/'.$book->id.'/info') }}" data-id="{{ $book->id }}" class="btn btn-secondary btn-icon-only" title="Informações do usuário"><i class="flaticon-list"></i></a> --}}
-
-                                                {{-- TODO Ate pensei em não permitir editar se o livro estiver emprestado, mas como não foi solicitado isto vou permitir funcionar normalmente. --}}
+                                                {{--Ate pensei em não permitir editar se o livro estiver emprestado, mas como não foi solicitado isto vou permitir funcionar normalmente a edição. --}}
                                                 @if ($canUpdate)
                                                     <a href="{{ url('livros/'.$book->id.'/editar') }}" class="btn btn-sm btn-primary" title="Editar livro"><i class="fas fa-pencil"></i></a>
                                                 @endif

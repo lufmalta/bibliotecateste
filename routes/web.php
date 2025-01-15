@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth'], function() {
 
             Route::get('livros',                ['uses' => 'App\Http\Controllers\BookController@index',  'permission' => 'books.index']);
             Route::get('livros/criar',          ['uses' => 'App\Http\Controllers\BookController@create', 'permission' => 'books.insert']);
-            Route::get('livros/{id}/editar',    ['uses' => 'App\Http\Controllers\BookController@edit',   'permission' => 'books.update'])->where(['id' => '[0-9+]']);
+            Route::get('livros/{id}/editar',    ['uses' => 'App\Http\Controllers\BookController@edit',   'permission' => 'books.update'])->where('id', '[0-9]+');
             Route::post('livros',               ['uses' => 'App\Http\Controllers\BookController@insert', 'permission' => 'books.insert']);
             Route::put('livros',                ['uses' => 'App\Http\Controllers\BookController@update', 'permission' => 'books.update']);
             Route::delete('livros',             ['uses' => 'App\Http\Controllers\BookController@delete', 'permission' => 'books.delete']);
@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function() {
 
             Route::get('usuarios',                ['uses' => 'App\Http\Controllers\UserController@index',  'permission' => 'users.index']);
             Route::get('usuarios/criar',          ['uses' => 'App\Http\Controllers\UserController@create', 'permission' => 'users.insert']);
-            Route::get('usuarios/{id}/editar',    ['uses' => 'App\Http\Controllers\UserController@edit',   'permission' => 'users.update'])->where(['id' => '[0-9+]']);
+            Route::get('usuarios/{id}/editar',    ['uses' => 'App\Http\Controllers\UserController@edit',   'permission' => 'users.update'])->where(['id' => '[0-9]+']);
             Route::post('usuarios',               ['uses' => 'App\Http\Controllers\UserController@insert', 'permission' => 'users.insert']);
             Route::put('usuarios',                ['uses' => 'App\Http\Controllers\UserController@update', 'permission' => 'users.update']);
             Route::delete('usuarios',             ['uses' => 'App\Http\Controllers\UserController@delete', 'permission' => 'users.delete']);
